@@ -10,8 +10,9 @@ const NavBar = () => {
         </NavLink>
         <ul className={ styles.links_list}>
             <li>
-                <NavLink to='/' className={({ isActive }) => (isActive ? styles.active : "")}>
-                    Home
+                {/* end significa o exat do react antigo */}
+                <NavLink end to='/' className={({ isActive }) => (isActive ? styles.active : styles.inactive)}>
+                     Home
                 </NavLink>
             </li>
             <li>
@@ -23,5 +24,8 @@ const NavBar = () => {
     </nav>
   )
 }
+
+
+// consertar isactive
 
 export default NavBar
