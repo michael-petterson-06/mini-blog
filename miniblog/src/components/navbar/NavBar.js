@@ -11,8 +11,18 @@ const NavBar = () => {
         <ul className={ styles.links_list}>
             <li>
                 {/* end significa o exat do react antigo */}
-                <NavLink end to='/' className={({ isActive }) => (isActive ? styles.active : styles.inactive)}>
+                <NavLink end to='/' className={({ isActive }) => (isActive ? styles.active : "")}>
                      Home
+                </NavLink>
+            </li>
+            <li>
+                <NavLink to='/login' className={({isActive}) => (isActive ? styles.active : "")}>
+                    Entrar
+                </NavLink>
+            </li>
+            <li>
+                <NavLink to='/register' className={({isActive}) => (isActive ? styles.active : '')}>
+                    Cadastrar
                 </NavLink>
             </li>
             <li>
