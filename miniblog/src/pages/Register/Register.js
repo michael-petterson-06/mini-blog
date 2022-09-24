@@ -18,7 +18,8 @@ const Register = () => {
                 <input
                      type="email"
                      name='email'
-                     required placeholder='E-mail do usuário' />
+                     required placeholder='E-mail do usuário'
+                      />
             </label>
             <label>
                 <span>Senha</span>
