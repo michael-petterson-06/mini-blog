@@ -1,4 +1,6 @@
-// import {db}  from "../firebase/config";
+//se tirar a linha 2 a tela de registro não abre, 
+//ela faz com que o app entenda que estamos  usando o banco firebase
+import {db}  from "../firebase/config"; 
 
 import {
     getAuth,
@@ -36,7 +38,6 @@ export const useAuthentication = () => {
           data.password
         );
 
-       
         await updateProfile(user, {
           displayName: data.displayName,
         });
