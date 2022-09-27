@@ -6,7 +6,7 @@ const About = () => {
   return (
     <div className={styles.about}>
         <h2>Sobre o mini <span>Blog</span></h2>
-        <p>Projeto desenvolvido com React no front-end e firebase no back-end</p>
+        <p>Projeto desenvolvido com React no front-end e Firebase no back-end</p>
         <Link to='/posts/create' className='btn'>
           Criar posts
         </Link>
