@@ -65,6 +65,10 @@ export const useAuthentication = () => {
       }
     };
 
+    const logout = () => {
+      checkIfIsCancelled();
+      signOut(auth);
+    }
     // colocar o cancelado com true assim que sair da pagina
     useEffect(() => {
       return () => setCancelled(true);
@@ -75,5 +79,6 @@ export const useAuthentication = () => {
       createUser,
       error,
       loading,
+      logout
     };
 } 
