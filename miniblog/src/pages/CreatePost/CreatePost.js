@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthValue } from '../../context/AuthContext';
+import { useInsertDocument } from "../../hooks/useInsertDocument";
 import styles from  './CreatePost.module.css';
 
 const CreatePost = () => {
@@ -11,8 +12,21 @@ const CreatePost = () => {
   const [tags, setTags] = useState([]);
   const [formError, setFormError] = useState('');
 
+  const { user } = useAuthValue();
+
+  const { insertDocument, response } = useInsertDocument("posts");
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    console.log({
+      title,
+      image,
+      body,
+      tags,
+      uid: user.uid,
+      createdBy: user.displayName,
+    });
   }
   return (
     <div className={styles.create_post}>
@@ -62,15 +76,14 @@ const CreatePost = () => {
               value={tags}
           />
         </label>
-        <button className="btn">Cadastrar</button>
-        {/* {!loading && <button className="btn">Cadastrar</button>}
-           
-            {loading && (
+        
+        {!response.loading && <button className="btn">Cadastrar</button>}
+           {response.loading && (
               <button className="btn" disabled>
                 Aguarde...
               </button>
             )}
-            {error && <p className="error">{error}</p>} */}
+            {response.error && <p className="error">{response.error}</p>}
       </form>
     </div>
   )
