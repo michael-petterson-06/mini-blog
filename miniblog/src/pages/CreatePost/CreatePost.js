@@ -17,9 +17,12 @@ const CreatePost = () => {
   const { insertDocument, response } = useInsertDocument("posts");
 
   const handleSubmit = (e) => {
+    
     e.preventDefault();
-
-    console.log({
+    
+    setFormError("");
+    
+    insertDocument({
       title,
       image,
       body,
@@ -27,12 +30,14 @@ const CreatePost = () => {
       uid: user.uid,
       createdBy: user.displayName,
     });
+  
   }
+  
   return (
     <div className={styles.create_post}>
       <h2>Criar post</h2>
       <p>Escreva sobre o que quiser e compartilhe sem conhecimento</p>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>
           <span>Título:</span>
           <input

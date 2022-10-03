@@ -21,6 +21,7 @@ const insertReducer = (state, action) => {
 };
 
 export const useInsertDocument = (docCollection) => {
+ 
   const [response, dispatch] = useReducer(insertReducer, initialState);
 
   // deal with memory leak
@@ -58,5 +59,3 @@ export const useInsertDocument = (docCollection) => {
 
   return { insertDocument, response };
 };
-
-
