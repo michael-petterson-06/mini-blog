@@ -12,6 +12,7 @@ const CreatePost = () => {
   const [tags, setTags] = useState([]);
   const [formError, setFormError] = useState('');
 
+  const navigate = useNavigate();
   const { user } = useAuthValue();
 
   const { insertDocument, response } = useInsertDocument("posts");
@@ -22,14 +23,31 @@ const CreatePost = () => {
     
     setFormError("");
     
+    try {
+      new URL(image);
+    } catch (error) {
+      setFormError("A imagem precisa ser uma URL.");
+    }
+
+   // pegar a string transforma em array tira os estações vazios e transforma tudo em minúscula
+    const tagsArray = tags.split(',').map((tag) => tag.trim().toLowerCase());
+
+    if (!title || !image || !tags || !body) {
+      setFormError('Por favor, preencha todos os campos.');
+    }
+
+    if(formError) return;
+
     insertDocument({
       title,
       image,
       body,
-      tags,
+      tagsArray,
       uid: user.uid,
       createdBy: user.displayName,
     });
+
+    // navigate("/");
   
   }
   
@@ -88,7 +106,9 @@ const CreatePost = () => {
                 Aguarde...
               </button>
             )}
-            {response.error && <p className="error">{response.error}</p>}
+        {(response.error || formError) && (
+          <p className="error">{response.error || formError}</p>
+        )}
       </form>
     </div>
   )
