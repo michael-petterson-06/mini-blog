@@ -30,6 +30,7 @@ export const useAuthentication = () => {
      
       checkIfIsCancelled();
       setLoading(true);
+      setError(null);
   
       try {
         const { user } = await createUserWithEmailAndPassword(

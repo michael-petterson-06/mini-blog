@@ -19,7 +19,7 @@ function App() {
   const { auth } = useAuthentication();
   //atribui ao loadingUser valor do user comparado com o undefined
   const loadingUser = user === undefined;
-
+  
    useEffect(() => {
     onAuthStateChanged(auth, (user) =>{
       setUser(user);
