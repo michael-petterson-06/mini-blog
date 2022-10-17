@@ -15,7 +15,6 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
     const [cancelled, setCancelled] = useState(null);
 
     useEffect(() => {
-
         async function loadData(){
             if(cancelled) return;
             setLoading(true);
